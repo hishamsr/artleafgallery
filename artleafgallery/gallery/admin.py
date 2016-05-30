@@ -1,14 +1,22 @@
 from django.contrib import admin
 
-from .models import Product, Category
+from .models import Product, Category, ArtImage, Artist
 
+class ArtImageInline(admin.TabularInline):
+        model = ArtImage
+        extra = 1
 
 class CatogoryInline(admin.TabularInline):
         model = Category
-        extra = 5
+        extra = 0
+
+class CategoryAdmin(admin.ModelAdmin):
+    inlines = [ArtImageInline]
 
 class ProductAdmin(admin.ModelAdmin):
-    inlines = [CatogoryInline]
+    inlines = [CatogoryInline, ArtImageInline]
 
-admin.site.register(Category)
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(ArtImage)
+admin.site.register(Artist)
 admin.site.register(Product, ProductAdmin)
