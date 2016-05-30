@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 class Product(models.Model):
     name = models.CharField(max_length=200, unique=True)
     description = models.TextField()
-    slider_image = models.ImageField(upload_to="media/slider")
-    homepage_list_icon = models.ImageField(upload_to="media/homepage_list")
+    slider_image = models.ImageField(upload_to="slider")
+    homepage_list_icon = models.ImageField(upload_to="homepage_list")
 
     def __str__(self):              
         return self.name
@@ -36,7 +36,7 @@ class Artist(models.Model):
 
 class Frame(models.Model):
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to="media/frames")
+    image = models.ImageField(upload_to="frames")
 
     def __str__(self):             
         return self.name
