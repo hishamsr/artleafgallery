@@ -6,4 +6,5 @@ DATABASES = {
         'NAME': 'artleafgallery',
     }
 }
+DEBUG = True
 

@@ -1,6 +1,7 @@
 
 from django.conf.urls import url, include, patterns
 from django.contrib import admin
+from django.conf import settings
 
 from rest_framework import routers
 from rest_framework.authtoken import views
@@ -30,3 +31,12 @@ urlpatterns = [
 	url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^sign_up/$', authentication_views.SignUp.as_view(), name="sign_up"),
 ]
+
+
+# ... your normal urlpatterns here
+print(settings.DEBUG)
+if settings.DEBUG:
+    # static files (images, css, javascript, etc.)
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT}))
