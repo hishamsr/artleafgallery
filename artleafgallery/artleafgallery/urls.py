@@ -21,6 +21,7 @@ router = routers.DefaultRouter()
 router.register(r'users', authentication_views.UserViewSet)
 router.register(r'groups', authentication_views.GroupViewSet)
 router.register(r'api/products', gallery_views.ProductViewSet)
+router.register(r'api/company', gallery_views.CompanyViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

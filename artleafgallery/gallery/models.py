@@ -57,3 +57,12 @@ class ArtImage(models.Model):
     class Meta:
         
         verbose_name_plural = "Art Works"
+
+class Company(models.Model):
+    name = models.CharField(max_length=100)
+    welcome_text = models.TextField()
+    telephone = models.CharField(max_length=13)
+    email = models.CharField(max_length=100)
+
+    def __str__(self):             
+        return self.name
