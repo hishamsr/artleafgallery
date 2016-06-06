@@ -8,6 +8,7 @@ class Product(models.Model):
     description = models.TextField()
     slider_image = models.ImageField(upload_to="slider")
     homepage_list_icon = models.ImageField(upload_to="homepage_list")
+    order = models.IntegerField(max_length=2, unique=True)
 
     def __str__(self):              
         return self.name

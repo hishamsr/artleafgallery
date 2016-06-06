@@ -13,7 +13,7 @@ from rest_framework import permissions, routers, serializers, viewsets
 
 class ProductViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.AllowAny,)
-    queryset = Product.objects.all()
+    queryset = Product.objects.all().order_by('order')
     serializer_class = ProductSerializer
 
 
