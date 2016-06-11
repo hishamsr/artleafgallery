@@ -23,6 +23,8 @@ router.register(r'groups', authentication_views.GroupViewSet)
 router.register(r'api/products', gallery_views.ProductViewSet)
 router.register(r'api/company', gallery_views.CompanyViewSet)
 
+
+
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
@@ -31,6 +33,9 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 	url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^sign_up/$', authentication_views.SignUp.as_view(), name="sign_up"),
+    url(r'api/artworks/(?P<product_id>.+)/(?P<category_id>.+)/$', gallery_views.ArtWorkList.as_view()),
+    url(r'api/artworks/(?P<product_id>.+)/$', gallery_views.ArtWorkList.as_view()),
+    
 ]
 
 

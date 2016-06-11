@@ -8,7 +8,7 @@ class Product(models.Model):
     description = models.TextField()
     slider_image = models.ImageField(upload_to="slider")
     homepage_list_icon = models.ImageField(upload_to="homepage_list")
-    order = models.IntegerField(max_length=2, unique=True)
+    order = models.IntegerField(unique=True)
 
     def __str__(self):              
         return self.name
@@ -48,10 +48,13 @@ def content_file_name(instance, filename):
 class ArtImage(models.Model):
     artist = models.ForeignKey(Artist)
     product = models.ForeignKey(Product)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, null=True, blank=True)
     image = models.ImageField(upload_to=content_file_name)
+    story = models.CharField(max_length=100)
+    description = models.CharField(max_length=100)
+    dimension = models.CharField(max_length=100)
     frames = models.ManyToManyField(Frame, related_name="frames")
-
+    price = models.DecimalField(decimal_places=2, max_digits=8)
     def __str__(self):             
         return self.product.name + "-" + self.artist.user.first_name + self.image.path
 
