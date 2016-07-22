@@ -47,7 +47,7 @@ def content_file_name(instance, filename):
 
 class ArtImage(models.Model):
     artist = models.ForeignKey(Artist)
-    product = models.ForeignKey(Product)
+    product = models.ForeignKey(Product, related_name="product")
     category = models.ForeignKey(Category, null=True, blank=True)
     image = models.ImageField(upload_to=content_file_name)
     story = models.CharField(max_length=100)
