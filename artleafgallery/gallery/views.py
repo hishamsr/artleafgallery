@@ -26,7 +26,6 @@ class CompanyViewSet(viewsets.ModelViewSet):
 
 class ArtWorkList(generics.ListAPIView):
     serializer_class = ArtImageSerializer
-
     def get_queryset(self):
         
         product_id = self.kwargs['product_id']
