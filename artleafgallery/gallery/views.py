@@ -7,7 +7,7 @@ from gallery.models import Product, Category, Company, Artist, Frame, ArtImage
 from authentication.permissions import IsAuthenticatedOrCreate
 
 
-from rest_framework import permissions, routers, serializers, viewsets
+from rest_framework import permissions, routers, serializers, viewsets, pagination
 
 
 
@@ -15,12 +15,14 @@ class ProductViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.AllowAny,)
     queryset = Product.objects.all().order_by('order')
     serializer_class = ProductSerializer
+    pagination_class = None
 
 
 class CompanyViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.AllowAny,)
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
+
 
 class ArtWorkList(generics.ListAPIView):
     serializer_class = ArtImageSerializer
