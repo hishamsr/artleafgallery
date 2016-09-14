@@ -53,8 +53,10 @@ class ArtImage(models.Model):
     story = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
     dimension = models.CharField(max_length=100)
-    frames = models.ManyToManyField(Frame, related_name="frames")
     price = models.DecimalField(decimal_places=2, max_digits=8)
+    frames = models.ManyToManyField(Frame, related_name="frames")
+    color = models.CharField(max_length=100, null=True, blank=True)
+
     def __str__(self):             
         return self.product.name + "-" + self.artist.user.first_name + self.image.path
 
