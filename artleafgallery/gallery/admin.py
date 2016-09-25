@@ -179,7 +179,7 @@ admin.site.register(ArtImage, ArtImageAdmin)
 class ArtImageInline(admin.TabularInline):
     form = ArtImageForm
     model = ArtImage
-    extra = 1
+    extra = 0
 
 class CatogoryInline(admin.TabularInline):
         model = Category
